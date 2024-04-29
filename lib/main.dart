@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/splash.dart';
+import 'package:tic_tac_toe/home.dart';
 
 void main() {
   runApp(
@@ -13,7 +13,7 @@ class TicTacToe extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Splash(),
+      home: Home(),
     );
   }
 }
