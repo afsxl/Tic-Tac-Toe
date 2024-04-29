@@ -188,13 +188,6 @@ class _ThreeState extends State<Three> {
   }
 
   void showMessage(String message) {
-    box = [
-      ['', '', ''],
-      ['', '', ''],
-      ['', '', ''],
-    ];
-    count = 0;
-    turn = !turn;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -251,5 +244,12 @@ class _ThreeState extends State<Three> {
         );
       },
     );
+    box = [
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', ''],
+    ];
+    count = 0;
+    turn = !turn;
   }
 }
