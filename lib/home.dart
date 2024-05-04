@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tic_tac_toe/Friends/three.dart';
+import 'package:lolxn_tic_tac_toe/Friends/three.dart';
 
 class Home extends StatelessWidget {
   const Home({
