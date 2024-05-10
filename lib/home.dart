@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
             children: [
               Image.asset(
                 'images/logo.png',
-                scale: 5,
+                scale: 3,
               ),
               const Text(
                 "Tic Tac Toe",
