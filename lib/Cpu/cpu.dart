@@ -537,15 +537,84 @@ class _CpuState extends State<Cpu> {
                   }
                 }
                 for (int i = 0; i < 3 && !turn; i++) {
-                  for (int j = 0; j < 3 && !turn; j++) {
-                    if (box[i][j] == "") {
-                      box[i][j] = "O";
-                      turn = !turn;
-                      count++;
-                      checkWin(i, j);
-                    }
+                  if (box[i][0] == "" && box[i][1] == "" && box[i][2] == "O") {
+                    box[i][0] = "O";
+                    count++;
+                    checkWin(i, 0);
+                    turn = !turn;
+                  } else if (box[i][0] == "" && box[i][2] == "" && box[i][1] == "O") {
+                    box[i][2] = "O";
+                    count++;
+                    checkWin(i, 2);
+                    turn = !turn;
+                  } else if (box[i][1] == "" && box[i][2] == "" && box[i][0] == "O") {
+                    box[i][1] = "O";
+                    count++;
+                    checkWin(i, 1);
+                    turn = !turn;
                   }
                 }
+                for (int i = 0; i < 3 && !turn; i++) {
+                  if (box[0][i] == "" && box[1][i] == "" && box[2][i] == "O") {
+                    box[0][i] = "O";
+                    count++;
+                    checkWin(0, i);
+                    turn = !turn;
+                  } else if (box[0][i] == "" && box[2][i] == "" && box[1][i] == "O") {
+                    box[2][i] = "O";
+                    count++;
+                    checkWin(2, i);
+                    turn = !turn;
+                  } else if (box[1][i] == "" && box[2][i] == "" && box[0][i] == "O") {
+                    box[1][i] = "O";
+                    count++;
+                    checkWin(1, i);
+                    turn = !turn;
+                  }
+                }
+                if (!turn) {
+                  if (box[0][0] == "" && box[1][1] == "" && box[2][2] == "O") {
+                    box[0][0] = "O";
+                    count++;
+                    checkWin(0, 0);
+                    turn = !turn;
+                  } else if (box[0][0] == "" && box[2][2] == "" && box[1][1] == "O") {
+                    box[2][2] = "O";
+                    count++;
+                    checkWin(2, 2);
+                    turn = !turn;
+                  } else if (box[1][1] == "" && box[2][2] == "" && box[0][0] == "O") {
+                    box[1][1] = "O";
+                    count++;
+                    checkWin(1, 1);
+                    turn = !turn;
+                  } else if (box[0][2] == "" && box[1][1] == "" && box[2][0] == "O") {
+                    box[0][2] = "O";
+                    count++;
+                    checkWin(0, 2);
+                    turn = !turn;
+                  } else if (box[0][2] == "" && box[2][0] == "" && box[1][1] == "O") {
+                    box[2][0] = "O";
+                    count++;
+                    checkWin(2, 0);
+                    turn = !turn;
+                  } else if (box[1][1] == "" && box[2][0] == "" && box[0][2] == "O") {
+                    box[1][1] = "O";
+                    count++;
+                    checkWin(1, 1);
+                    turn = !turn;
+                  }
+                }
+                // for (int i = 0; i < 3 && !turn; i++) {
+                //   for (int j = 0; j < 3 && !turn; j++) {
+                //     if (box[i][j] == "") {
+                //       box[i][j] = "O";
+                //       turn = !turn;
+                //       count++;
+                //       checkWin(i, j);
+                //     }
+                //   }
+                // }
               }
             },
           );
