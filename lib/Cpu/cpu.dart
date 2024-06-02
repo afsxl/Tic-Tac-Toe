@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class Cpu extends StatefulWidget {
@@ -20,6 +19,7 @@ class _CpuState extends State<Cpu> {
   int tie = 0;
   int count = 0;
   bool turn = true;
+  bool start = true;
   bool gameOver = false;
 
   @override
@@ -140,6 +140,7 @@ class _CpuState extends State<Cpu> {
                                                   ];
                                                   count = 0;
                                                   turn = true;
+                                                  start = true;
                                                   player = 0;
                                                   cpu = 0;
                                                   tie = 0;
@@ -175,7 +176,10 @@ class _CpuState extends State<Cpu> {
                                                     ['', '', ''],
                                                   ];
                                                   count = 0;
-                                                  turn = true;
+                                                  turn = start;
+                                                  if (!turn) {
+                                                    cpuPlay();
+                                                  }
                                                 },
                                               );
                                             }
@@ -364,7 +368,9 @@ class _CpuState extends State<Cpu> {
                 checkWin(i, j);
               }
             }
-            cpuPlay();
+            if (!gameOver) {
+              cpuPlay();
+            }
           },
         );
       }
@@ -380,7 +386,7 @@ class _CpuState extends State<Cpu> {
         if (mounted) {
           setState(
             () {
-              if (count < 3) {
+              if (count < 2) {
                 while (!turn) {
                   Random random = Random();
                   int i = random.nextInt(3);
@@ -520,70 +526,149 @@ class _CpuState extends State<Cpu> {
                 for (int i = 0; i < 3 && !turn; i++) {
                   if (box[i][0] == "O" && box[i][1] == "O" && box[i][2] == "") {
                     box[i][2] = "O";
-                    checkWin(i, 2);
                     count++;
+                    checkWin(i, 2);
                     turn = !turn;
                   } else if (box[i][0] == "O" && box[i][2] == "O" && box[i][1] == "") {
                     box[i][1] = "O";
-                    checkWin(i, 1);
                     count++;
+                    checkWin(i, 1);
                     turn = !turn;
                   } else if (box[i][1] == "O" && box[i][2] == "O" && box[i][0] == "") {
                     box[i][0] = "O";
-                    checkWin(i, 0);
                     count++;
+                    checkWin(i, 0);
                     turn = !turn;
                   }
                 }
                 for (int i = 0; i < 3 && !turn; i++) {
                   if (box[0][i] == "O" && box[1][i] == "O" && box[2][i] == "") {
                     box[2][i] = "O";
-                    checkWin(2, i);
                     count++;
+                    checkWin(2, i);
                     turn = !turn;
                   } else if (box[0][i] == "O" && box[2][i] == "O" && box[1][i] == "") {
                     box[1][i] = "O";
-                    checkWin(1, i);
                     count++;
+                    checkWin(1, i);
                     turn = !turn;
                   } else if (box[1][i] == "O" && box[2][i] == "O" && box[0][i] == "") {
                     box[0][i] = "O";
-                    checkWin(0, i);
                     count++;
+                    checkWin(0, i);
                     turn = !turn;
                   }
                 }
                 if (!turn) {
                   if (box[0][0] == "O" && box[1][1] == "O" && box[2][2] == "") {
                     box[2][2] = "O";
+                    count++;
                     checkWin(2, 2);
                     turn = !turn;
-                    count++;
                   } else if (box[0][0] == "O" && box[2][2] == "O" && box[1][1] == "") {
                     box[1][1] = "O";
+                    count++;
                     checkWin(1, 1);
                     turn = !turn;
-                    count++;
                   } else if (box[1][1] == "O" && box[2][2] == "O" && box[0][0] == "") {
                     box[0][0] = "O";
+                    count++;
                     checkWin(0, 0);
                     turn = !turn;
-                    count++;
                   } else if (box[0][2] == "O" && box[1][1] == "O" && box[2][0] == "") {
                     box[2][0] = "O";
+                    count++;
                     checkWin(2, 0);
                     turn = !turn;
-                    count++;
                   } else if (box[0][2] == "O" && box[2][0] == "O" && box[1][1] == "") {
                     box[1][1] = "O";
+                    count++;
                     checkWin(1, 1);
                     turn = !turn;
-                    count++;
                   } else if (box[1][1] == "O" && box[2][0] == "O" && box[0][2] == "") {
                     box[0][2] = "O";
+                    count++;
                     checkWin(0, 2);
                     turn = !turn;
+                  }
+                }
+                for (int i = 0; i < 3 && !turn; i++) {
+                  if (box[i][0] == "X" && box[i][1] == "X" && box[i][2] == "") {
+                    box[i][2] = "O";
                     count++;
+                    checkWin(i, 2);
+                    turn = !turn;
+                  } else if (box[i][0] == "X" && box[i][2] == "X" && box[i][1] == "") {
+                    box[i][1] = "O";
+                    count++;
+                    checkWin(i, 1);
+                    turn = !turn;
+                  } else if (box[i][1] == "X" && box[i][2] == "X" && box[i][0] == "") {
+                    box[i][0] = "O";
+                    count++;
+                    checkWin(i, 0);
+                    turn = !turn;
+                  }
+                }
+                for (int i = 0; i < 3 && !turn; i++) {
+                  if (box[0][i] == "X" && box[1][i] == "X" && box[2][i] == "") {
+                    box[2][i] = "O";
+                    count++;
+                    checkWin(2, i);
+                    turn = !turn;
+                  } else if (box[0][i] == "X" && box[2][i] == "X" && box[1][i] == "") {
+                    box[1][i] = "O";
+                    count++;
+                    checkWin(1, i);
+                    turn = !turn;
+                  } else if (box[1][i] == "X" && box[2][i] == "X" && box[0][i] == "") {
+                    box[0][i] = "O";
+                    count++;
+                    checkWin(0, i);
+                    turn = !turn;
+                  }
+                }
+                if (!turn) {
+                  if (box[0][0] == "X" && box[1][1] == "X" && box[2][2] == "") {
+                    box[2][2] = "O";
+                    count++;
+                    checkWin(2, 2);
+                    turn = !turn;
+                  } else if (box[0][0] == "X" && box[2][2] == "X" && box[1][1] == "") {
+                    box[1][1] = "O";
+                    count++;
+                    checkWin(1, 1);
+                    turn = !turn;
+                  } else if (box[1][1] == "X" && box[2][2] == "X" && box[0][0] == "") {
+                    box[0][0] = "O";
+                    count++;
+                    checkWin(0, 0);
+                    turn = !turn;
+                  } else if (box[0][2] == "X" && box[1][1] == "X" && box[2][0] == "") {
+                    box[2][0] = "O";
+                    count++;
+                    checkWin(2, 0);
+                    turn = !turn;
+                  } else if (box[0][2] == "X" && box[2][0] == "X" && box[1][1] == "") {
+                    box[1][1] = "O";
+                    count++;
+                    checkWin(1, 1);
+                    turn = !turn;
+                  } else if (box[1][1] == "X" && box[2][0] == "X" && box[0][2] == "") {
+                    box[0][2] = "O";
+                    count++;
+                    checkWin(0, 2);
+                    turn = !turn;
+                  }
+                }
+                for (int i = 0; i < 3 && !turn; i++) {
+                  for (int j = 0; j < 3 && !turn; j++) {
+                    if (box[i][j] == "") {
+                      box[i][j] = "O";
+                      turn = !turn;
+                      count++;
+                      checkWin(i, j);
+                    }
                   }
                 }
               }
@@ -645,7 +730,7 @@ class _CpuState extends State<Cpu> {
   void showResult(String message) async {
     Future.delayed(
       const Duration(
-        milliseconds: 500,
+        seconds: 1,
       ),
       () {
         showDialog(
@@ -719,11 +804,15 @@ class _CpuState extends State<Cpu> {
                                       ['', '', ''],
                                     ];
                                     count = 0;
-                                    turn = true;
+                                    start = !start;
+                                    turn = start;
                                   },
                                 );
                               }
                               Navigator.pop(context);
+                              if (!turn) {
+                                cpuPlay();
+                              }
                             },
                             child: const Text(
                               "Next Round",
