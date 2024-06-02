@@ -605,16 +605,16 @@ class _CpuState extends State<Cpu> {
                     turn = !turn;
                   }
                 }
-                // for (int i = 0; i < 3 && !turn; i++) {
-                //   for (int j = 0; j < 3 && !turn; j++) {
-                //     if (box[i][j] == "") {
-                //       box[i][j] = "O";
-                //       turn = !turn;
-                //       count++;
-                //       checkWin(i, j);
-                //     }
-                //   }
-                // }
+                for (int i = 0; i < 3 && !turn; i++) {
+                  for (int j = 0; j < 3 && !turn; j++) {
+                    if (box[i][j] == "") {
+                      box[i][j] = "O";
+                      turn = !turn;
+                      count++;
+                      checkWin(i, j);
+                    }
+                  }
+                }
               }
             },
           );
