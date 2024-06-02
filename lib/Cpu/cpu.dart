@@ -397,131 +397,6 @@ class _CpuState extends State<Cpu> {
                     turn = !turn;
                   }
                 }
-              } else if (count < 5) {
-                for (int i = 0; i < 3 && !turn; i++) {
-                  if (box[i][0] == "X" && box[i][1] == "X" && box[i][2] == "") {
-                    box[i][2] = "O";
-                    count++;
-                    turn = !turn;
-                    break;
-                  } else if (box[i][0] == "X" && box[i][2] == "X" && box[i][1] == "") {
-                    box[i][1] = "O";
-                    count++;
-                    turn = !turn;
-                    break;
-                  } else if (box[i][1] == "X" && box[i][2] == "X" && box[i][0] == "") {
-                    box[i][0] = "O";
-                    count++;
-                    turn = !turn;
-                    break;
-                  }
-                }
-                for (int i = 0; i < 3 && !turn; i++) {
-                  if (box[0][i] == "X" && box[1][i] == "X" && box[2][i] == "") {
-                    box[2][i] = "O";
-                    count++;
-                    turn = !turn;
-                    break;
-                  } else if (box[0][i] == "X" && box[2][i] == "X" && box[1][i] == "") {
-                    box[1][i] = "O";
-                    count++;
-                    turn = !turn;
-                    break;
-                  } else if (box[1][i] == "X" && box[2][i] == "X" && box[0][i] == "") {
-                    box[0][i] = "O";
-                    count++;
-                    turn = !turn;
-                    break;
-                  }
-                }
-                if (!turn && box[0][0] == "X" && box[1][1] == "X" && box[2][2] == "") {
-                  box[2][2] = "O";
-                  count++;
-                  turn = !turn;
-                } else if (!turn && box[0][0] == "X" && box[2][2] == "X" && box[1][1] == "") {
-                  box[1][1] = "O";
-                  count++;
-                  turn = !turn;
-                } else if (!turn && box[1][1] == "X" && box[2][2] == "X" && box[0][0] == "") {
-                  box[0][0] = "O";
-                  count++;
-                  turn = !turn;
-                } else if (!turn && box[0][2] == "X" && box[1][1] == "X" && box[2][0] == "") {
-                  box[2][0] = "O";
-                  count++;
-                  turn = !turn;
-                } else if (!turn && box[0][2] == "X" && box[2][0] == "X" && box[1][1] == "") {
-                  box[1][1] = "O";
-                  count++;
-                  turn = !turn;
-                } else if (!turn && box[1][1] == "X" && box[2][0] == "X" && box[0][2] == "") {
-                  box[0][2] = "O";
-                  count++;
-                  turn = !turn;
-                } else {
-                  for (int i = 0; i < 3 && !turn; i++) {
-                    for (int j = 0; j < 3 && !turn; j++) {
-                      if (box[i][j] == "O") {
-                        if (box[i][0] == "" && box[i][1] == "") {
-                          box[i][0] = "O";
-                          count++;
-                          turn = !turn;
-                        } else if (box[i][0] == "" && box[i][2] == "") {
-                          box[i][2] = "O";
-                          count++;
-                          turn = !turn;
-                        } else if (box[i][1] == "" && box[i][2] == "") {
-                          box[i][1] = "O";
-                          count++;
-                          turn = !turn;
-                        } else if (box[0][j] == "" && box[1][j] == "") {
-                          box[0][j] = "O";
-                          count++;
-                          turn = !turn;
-                        } else if (box[0][j] == "" && box[2][j] == "") {
-                          box[2][j] = "O";
-                          count++;
-                          turn = !turn;
-                        } else if (box[1][j] == "" && box[2][j] == "") {
-                          box[1][j] = "O";
-                          count++;
-                          turn = !turn;
-                        }
-                      }
-                    }
-                  }
-                  if (!turn) {
-                    if (box[0][0] == "O" || box[1][1] == "O" || box[2][2] == "O") {
-                      if (box[0][0] == "" && box[1][1] == "") {
-                        box[0][0] = "O";
-                        count++;
-                        turn = !turn;
-                      } else if (box[0][0] == "" && box[2][2] == "") {
-                        box[2][2] = "O";
-                        count++;
-                        turn = !turn;
-                      } else if (box[1][1] == "" && box[2][2] == "") {
-                        box[1][1] = "O";
-                        count++;
-                        turn = !turn;
-                      }
-                    } else if (box[0][2] == "O" || box[1][1] == "O" || box[2][0] == "O") {
-                      if (box[0][2] == "" && box[1][1] == "") {
-                        box[0][2] = "O";
-                        count++;
-                        turn = !turn;
-                      } else if (box[0][2] == "" && box[2][0] == "") {
-                        box[2][0] = "O";
-                        count++;
-                        turn = !turn;
-                      } else if (box[1][1] == "" && box[2][0] == "") {
-                        box[1][1] = "O";
-                        count++;
-                        turn = !turn;
-                      }
-                    }
-                  }
-                }
               } else {
                 for (int i = 0; i < 3 && !turn; i++) {
                   if (box[i][0] == "O" && box[i][1] == "O" && box[i][2] == "") {
@@ -680,50 +555,52 @@ class _CpuState extends State<Cpu> {
   }
 
   void checkWin(int i, int j) {
-    if (box[i][0] == box[i][1] && box[i][1] == box[i][2]) {
-      if (box[i][0] == 'X') {
+    if (count >= 5) {
+      if (box[i][0] == box[i][1] && box[i][1] == box[i][2]) {
+        if (box[i][0] == 'X') {
+          gameOver = true;
+          player++;
+          showResult("X Won");
+        } else {
+          gameOver = true;
+          cpu++;
+          showResult("O Won");
+        }
+      } else if (box[0][j] == box[1][j] && box[1][j] == box[2][j]) {
+        if (box[1][j] == 'X') {
+          gameOver = true;
+          player++;
+          showResult("X Won");
+        } else {
+          gameOver = true;
+          cpu++;
+          showResult("O Won");
+        }
+      } else if (box[0][0] == box[1][1] && box[1][1] == box[2][2]) {
+        if (box[1][1] == "X") {
+          gameOver = true;
+          player++;
+          showResult("X Won");
+        } else {
+          gameOver = true;
+          cpu++;
+          showResult("O Won");
+        }
+      } else if (box[0][2] == box[1][1] && box[1][1] == box[2][0]) {
+        if (box[1][1] == "X") {
+          gameOver = true;
+          player++;
+          showResult("X Won");
+        } else {
+          gameOver = true;
+          cpu++;
+          showResult("O Won");
+        }
+      } else if (count == 9) {
         gameOver = true;
-        player++;
-        showResult("X Won");
-      } else {
-        gameOver = true;
-        cpu++;
-        showResult("O Won");
+        tie++;
+        showResult("Tie");
       }
-    } else if (box[0][j] == box[1][j] && box[1][j] == box[2][j]) {
-      if (box[1][j] == 'X') {
-        gameOver = true;
-        player++;
-        showResult("X Won");
-      } else {
-        gameOver = true;
-        cpu++;
-        showResult("O Won");
-      }
-    } else if (box[0][0] == box[1][1] && box[1][1] == box[2][2]) {
-      if (box[1][1] == "X") {
-        gameOver = true;
-        player++;
-        showResult("X Won");
-      } else {
-        gameOver = true;
-        cpu++;
-        showResult("O Won");
-      }
-    } else if (box[0][2] == box[1][1] && box[1][1] == box[2][0]) {
-      if (box[1][1] == "X") {
-        gameOver = true;
-        player++;
-        showResult("X Won");
-      } else {
-        gameOver = true;
-        cpu++;
-        showResult("O Won");
-      }
-    } else if (count == 9) {
-      gameOver = true;
-      tie++;
-      showResult("Tie");
     }
   }
 
