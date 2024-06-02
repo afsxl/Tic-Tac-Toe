@@ -3,9 +3,7 @@ import 'package:lolxn_tic_tac_toe/Cpu/cpu.dart';
 import 'package:lolxn_tic_tac_toe/Player/player.dart';
 
 class Home extends StatelessWidget {
-  const Home({
-    super.key,
-  });
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {

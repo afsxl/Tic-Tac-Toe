@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Player extends StatefulWidget {
-  const Player({
-    super.key,
-  });
+  const Player({super.key});
 
   @override
   State<Player> createState() => _PlayerState();
@@ -106,8 +104,7 @@ class _PlayerState extends State<Player> {
                                 ),
                               ),
                               child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   const Text(
                                     "Restart Or Reset ?",
@@ -119,16 +116,12 @@ class _PlayerState extends State<Player> {
                                     ),
                                   ),
                                   Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                3.5,
+                                        width: MediaQuery.of(context).size.width / 3.5,
                                         decoration: BoxDecoration(
-                                          color: const Color.fromARGB(
-                                              255, 0, 203, 192),
+                                          color: const Color.fromARGB(255, 0, 203, 192),
                                           borderRadius: BorderRadius.circular(
                                             10,
                                           ),
@@ -162,12 +155,9 @@ class _PlayerState extends State<Player> {
                                         ),
                                       ),
                                       Container(
-                                        width:
-                                            MediaQuery.of(context).size.width /
-                                                3.5,
+                                        width: MediaQuery.of(context).size.width / 3.5,
                                         decoration: BoxDecoration(
-                                          color: const Color.fromARGB(
-                                              255, 250, 182, 35),
+                                          color: const Color.fromARGB(255, 250, 182, 35),
                                           borderRadius: BorderRadius.circular(
                                             10,
                                           ),
@@ -200,11 +190,9 @@ class _PlayerState extends State<Player> {
                                     ],
                                   ),
                                   Container(
-                                    width:
-                                        MediaQuery.of(context).size.width / 3.5,
+                                    width: MediaQuery.of(context).size.width / 3.5,
                                     decoration: BoxDecoration(
-                                      color: const Color.fromARGB(
-                                          255, 163, 191, 202),
+                                      color: const Color.fromARGB(255, 163, 191, 202),
                                       borderRadius: BorderRadius.circular(
                                         10,
                                       ),
@@ -258,9 +246,7 @@ class _PlayerState extends State<Player> {
                             child: Text(
                               box[i][j],
                               style: TextStyle(
-                                color: box[i][j] == "X"
-                                    ? const Color.fromARGB(255, 0, 203, 192)
-                                    : const Color.fromARGB(255, 250, 182, 35),
+                                color: box[i][j] == "X" ? const Color.fromARGB(255, 0, 203, 192) : const Color.fromARGB(255, 250, 182, 35),
                                 fontSize: 40,
                               ),
                             ),
@@ -269,10 +255,7 @@ class _PlayerState extends State<Player> {
                     ],
                   ),
                   SizedBox(
-                    height: (MediaQuery.of(context).size.width -
-                            (MediaQuery.of(context).size.width / 4) * 3 -
-                            80) /
-                        2,
+                    height: (MediaQuery.of(context).size.width - (MediaQuery.of(context).size.width / 4) * 3 - 80) / 2,
                   ),
                 ],
               ),
@@ -305,10 +288,7 @@ class _PlayerState extends State<Player> {
                   ),
                 ),
                 SizedBox(
-                  width: (MediaQuery.of(context).size.width -
-                          (MediaQuery.of(context).size.width / 4) * 3 -
-                          80) /
-                      2,
+                  width: (MediaQuery.of(context).size.width - (MediaQuery.of(context).size.width / 4) * 3 - 80) / 2,
                 ),
                 Expanded(
                   child: Container(
@@ -334,10 +314,7 @@ class _PlayerState extends State<Player> {
                   ),
                 ),
                 SizedBox(
-                  width: (MediaQuery.of(context).size.width -
-                          (MediaQuery.of(context).size.width / 4) * 3 -
-                          80) /
-                      2,
+                  width: (MediaQuery.of(context).size.width - (MediaQuery.of(context).size.width / 4) * 3 - 80) / 2,
                 ),
                 Expanded(
                   child: Container(
